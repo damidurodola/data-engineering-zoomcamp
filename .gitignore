@@ -8,6 +8,7 @@ __pycache__/
 
 # data
 *.parquet
+*.csv
 
 # Distribution / packaging
 .Python
