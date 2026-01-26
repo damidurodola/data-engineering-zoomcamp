@@ -49,7 +49,7 @@ GROUP BY t. lpep_pickup_datetime
 ORDER BY MAX(t. trip_distance) DESC
 LIMIT 1;
 ```
-![Alt text describing the image](01-docker-terraform/img/longest_trip.png "Longest Trip")
+![Alt text describing the image](img/longest_trip.png "Longest Trip")
 
 ### Question 5. Biggest pickup zone
 Which was the pickup zone with the largest total_amount (sum of all trips) on November 18th, 2025?
@@ -67,7 +67,7 @@ GROUP BY tzl. "Zone"
 ORDER BY sum_amount DESC
 LIMIT 1;
 ```
-![Alt text describing the image](01-docker-terraform/img/pick_up_zone.png "Biggest pickup zone")
+![Alt text describing the image](img/pick_up_zone.png "Biggest pickup zone")
 
 ### Question 6. Largest tip
 For the passengers picked up in the zone named "East Harlem North" in November 2025, which was the drop off zone that had the largest tip?
@@ -93,7 +93,7 @@ GROUP BY tzl."Zone"
 ORDER  BY trip_amount  DESC
 LIMIT 1;
 ```
-![Alt text describing the image](01-docker-terraform/img/largest_tip.png "LArgest tip")
+![Alt text describing the image](img/largest_tip.png "LArgest tip")
 
 ### Question 7. Terraform Workflow
 terraform init, terraform apply -auto-approve, terraform destroy
