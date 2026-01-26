@@ -33,7 +33,7 @@ t. lpep_pickup_datetime <= DATE '2025-12-01' AND t. lpep_pickup_datetime >= DATE
 AND t. trip_distance <= 1;
 ```
 
-![Alt text describing the image](01-docker-terraform/img/trip_count.png "Trip Count")
+![Alt text describing the image](img/trip_count.png "Trip Count")
 
 ### Question 4. Longest trip for each day
 Which was the pick up day with the longest trip distance? Only consider trips with trip_distance less than 100 miles (to exclude data errors).
