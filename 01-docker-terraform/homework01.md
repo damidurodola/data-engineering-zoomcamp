@@ -99,3 +99,4 @@ LIMIT 1;
 terraform init, terraform apply -auto-approve, terraform destroy
 
 ### Learning in public
+[LinkedIn](https://www.linkedin.com/posts/damiloladurodola_github-datatalksclubdata-engineering-zoomcamp-activity-7421684462406692864-0_Y2?utm_source=share&utm_medium=member_desktop&rcm=ACoAABOr_qMB-3T-bPWGBPEFgtXRSKP06xF61f0)
