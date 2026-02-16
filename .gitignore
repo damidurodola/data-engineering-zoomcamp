@@ -9,7 +9,6 @@ __pycache__/
 
 # data
 *.parquet
-*.csv
 *.json
 
 # Distribution / packaging
