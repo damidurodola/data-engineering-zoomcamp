@@ -1,68 +1,66 @@
 Analytics Engineering
 
-Data Domain Developments
+This folder captures the core ideas behind analytics engineering, the bridge between data infrastructure and business-facing analytics.
 
-- Massively Paralllel Processing DBs
-- Data pipelines as a service
-- SQL-first
-- Version control systems
-- Self sevice analytics
-- Data Governance
+Data Domain Trends
 
-Role sin a Data Team
-- Datea Eninger- prepares and maintain the infrastructure the data team needs.
-- Analytics Engineer -Introduces the good software engineering practices to help the efforts of data analysts and data scientists.
-- Data Analyst - USe datat to answer questions and solve problems.
+- Massively parallel processing databases unlock warehouse-scale compute.
+- Pipelines-as-a-service tools reduce the need for bespoke orchestration code.
+- SQL-first tooling keeps transformations accessible to analysts and engineers.
+- Version control enables collaboration, reviews, and reproducibility.
+- Self-service analytics platforms empower business teams.
+- Data governance ensures quality, lineage, and compliance.
 
-Tools
--Data loading
-- Data storing: cloud data warehouses like snowflakes, bigquery, redshift
--Data modelling: Tools like dbt or Dataform
-- Data presentation : BI tools like google data studio, Looker, Mode or Tableau
+Roles in a Modern Data Team
 
-Analytics  engineer work with the last two tools
+- Data Engineer: builds and maintains ingestion, storage, and compute platforms.
+- Analytics Engineer: applies software engineering practices to analytics code so analysts can ship faster with confidence.
+- Data Analyst: leverages curated data to answer business questions and guide decisions.
 
-ETL vs ELT
+Tooling Stack
 
-Kimballs's Dimensional Modelling
-Objective
-- deliver understandable data to business users
-- deliver fast uwery performance
+- Data loading: batch or streaming ingestion services.
+- Data storage: cloud warehouses such as Snowflake, BigQuery, or Redshift.
+- Data modeling: transformation frameworks like dbt or Dataform.
+- Data presentation: BI tools including Looker, Mode, Tableau, or Looker Studio.
 
-Approach
-priortize understandable data over non 3NF normalized DBS
+Analytics engineers typically own the modeling and presentation layers, partnering closely with both engineers and analysts.
 
-StarSchema
+ETL vs. ELT
 
-Facts tables
-- Measure ment, facts and corresponds to a business process (verbs) e.g
+- ETL (Extract, Transform, Load) transforms data before it lands in the warehouse.
+- ELT (Extract, Load, Transform) loads raw data first, leaving transformations to warehouse-native tools. Modern cloud warehouses favor ELT because compute is elastic and transformations are easier to version and monitor.
 
-Dimensions tables
-- relates to a business entity (nouns) e.d sales
+Kimball Dimensional Modeling
 
-DBT
-A transformation workfloe that uses SQL tp deploy analytocs code follwing software enginering best practices.
+- Objective: deliver understandable data to business users and ensure fast query performance.
+- Approach: prioritize ease of use over strict third-normal-form schemas by organizing data into star schemas.
+- Fact tables capture measurable business processes (verbs) such as trips, sales, or subscriptions.
+- Dimension tables describe business entities (nouns) such as customers, drivers, or locations.
 
-data sources ---- data loaders ---data warehouse ---------- BI Tools, other data consumers
-                                  raw data-dbt-transformed
+dbt Overview
 
-Each dbt model is:
-- a sql file, select statement(no DDL or DML)
+- dbt is a transformation workflow that lets teams write modular SQL models while following software engineering best practices (version control, tests, documentation, CI).
+- Typical flow: data sources -> loaders -> warehouse (raw) -> dbt transforms -> BI tools and downstream consumers.
+- Each dbt model is a single SELECT statement; dbt handles materialization (views, tables) and dependencies.
+- dbt Core is the open-source CLI; dbt Cloud is the managed SaaS experience with a hosted IDE, scheduler, and metadata.
 
-How to use dbt?
-dbt Core: opensource project allows data transformation
+Loading Yellow Taxi Data
 
-dbt Cloud: SaaS application to develop and manage dbt projects
-
-How to Load Data
-- Run the load_taxi_data.py to download from source and upload to a GCP Bucket.
+1. Run `python load_taxi_data.py` from this directory to download the source CSV files and upload them to the designated GCP bucket.
+2. Create an external BigQuery table that references the GCS URIs:
 
 ```
--- Creating external table referring to gcs path
+-- Create an external table over the staged CSV files.
 CREATE OR REPLACE EXTERNAL TABLE `majestic-option-485903-m2.zoomcamp.external_yellow_2019-2020_tripdata`
 OPTIONS (
   format = 'CSV',
   uris = ['gs://bigquery-zoomcamp-dami-demo/yellow_tripdata_*.csv.gz']
 );
 ```
+
+Next Steps
+
+- Create a dbt Cloud account (or use dbt Core locally) and connect it to the warehouse.
+- Complete the workspace setup checklist in `load_taxi_data.py` comments to ensure credentials, datasets, and schedules are in place.
 

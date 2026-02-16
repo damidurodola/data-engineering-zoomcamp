@@ -258,6 +258,7 @@ terraform.rc
 # planout
 
 *.json
+*.csv.gz
 
 
 
