@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: staging
+    description: >
+      Staging model for green taxi trip data. This model standardizes column names
+      and data types from the raw green_tripdata source, providing a clean foundation
+      for downstream transformations.
+    database: majestic-option-485903-m2
+    schema: zoomcamp
+
+    tables:
+      - name: green_2019_2020_tripdata
+      - name: yellow_2019_2020_tripdata
