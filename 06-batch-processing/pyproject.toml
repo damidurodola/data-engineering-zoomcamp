@@ -3,7 +3,8 @@ name = "06-batch-processing"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.12"
 dependencies = [
+    "findspark>=2.0.1",
     "pyspark>=4.1.1",
 ]
